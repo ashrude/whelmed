@@ -2,7 +2,8 @@
   "name": "whelmed",
   "version": "0.1.0",
   "description": "Robin's favorite framework",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ashrude/whelmed.git"
