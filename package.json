@@ -1,0 +1,22 @@
+{
+  "name": "whelmed",
+  "version": "0.1.0",
+  "description": "Robin's favorite framework",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashrude/whelmed.git"
+  },
+  "author": "Ashley Rudelsheim",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ashrude/whelmed/issues"
+  },
+  "homepage": "https://github.com/ashrude/whelmed#readme",
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
