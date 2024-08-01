@@ -1,6 +1,6 @@
-import { Widget } from "../widget";
+import { Widget, WidgetParams } from "./Widget";
 
-interface params {
+interface params extends WidgetParams {
     children: Array<Widget>,
     orientation?: "horizontal" | "vertical"
 }
@@ -9,27 +9,29 @@ export class Box extends Widget {
     children: Array<Widget>;
     #orientation: "horizontal" | "vertical" = "horizontal"
 
+    element: HTMLElement = document.createElement("div");
+
     constructor(params: params) {
         super();
+        super.init(params);
 
         if (params.orientation)
-        this.#orientation = params.orientation;
+            this.#orientation = params.orientation;
 
         this.children = params.children;
     }
 
     build(): HTMLElement {
-        let self = document.createElement("div");
-        self.classList.add("whelmed-box");
-        self.style.display = "flex";
-        self.style.flexDirection = this.#orientation === "horizontal" ? "row" : "column";
+        this.element.classList.add("whelmed-box");
+        this.element.style.display = "flex";
+        this.element.style.flexDirection = this.#orientation === "horizontal" ? "row" : "column";
 
         for (const child of this.children) {
-            self.appendChild(child.build());
+            this.element.appendChild(child.build());
         }
         
-        self.classList.add("whelmed-box");
+        this.element.classList.add("whelmed-box");
 
-        return self;
+        return this.element;
     }
 }

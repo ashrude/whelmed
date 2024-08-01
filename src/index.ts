@@ -2,13 +2,39 @@ export * from "./widgets/Application";
 export * from "./widgets/Label";
 export * from "./widgets/Box";
 export * from "./widgets/Button";
+export * from "./widgets/Seperator";
+export * from "./widgets/Row";
+export * from "./widgets/GenRow";
+export * from "./widgets/RowGroup";
+export * from "./widgets/EntryRow";
+
 
 export * from "./component";
-export * from "./widget";
+export * from "./widgets/Widget";
 
 export class Binding<T> {
+    static disregard_set<H>(
+        value: H | Binding<H>,
+        setter: (value: H) => void
+    ): number {
+        if (value instanceof Binding) {
+            value.get().then(setter);
+            return value.subscribe(setter);
+        }
+
+        setter(value);
+        return 0;
+    }
+    static disregard_unsubscribe<H>(
+        value: H | Binding<H>,
+        id: number
+    ) {
+        if (value instanceof Binding)
+            value.unsubscribe(id);
+    }
+
     #subscriptions: Record<number, (value: T) => void> = {};
-    #count: number = 0;
+    #count: number = 1;
 
     value: T; // Using this value directly is risky
 

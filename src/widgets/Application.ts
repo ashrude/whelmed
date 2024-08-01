@@ -1,4 +1,4 @@
-import { Widget } from "../widget";
+import { Widget } from "./Widget";
 
 interface params {
     id: string,
@@ -8,6 +8,8 @@ interface params {
 export class Application extends Widget {
     id: string;
     child: Widget;
+
+    element: HTMLElement = document.createElement("div");
 
     constructor(params: params) {
         super();
@@ -19,10 +21,10 @@ export class Application extends Widget {
     build(): HTMLElement {
         const child = this.child.build();
 
-        const self = document.createElement("div");
-        self.id = this.id;
-        self.appendChild(child);
+        this.element.id = this.id;
+        this.element.appendChild(child);
+        this.element.classList.add("whelmed-app");
 
-        return self;
+        return this.element;
     }
 }

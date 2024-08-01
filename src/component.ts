@@ -1,4 +1,4 @@
-import { Widget } from "./widget";
+import { Widget } from "./widgets/Widget";
 
 export abstract class Component<
     INPUT,
