@@ -1,6 +1,6 @@
 {
   "name": "whelmed",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Robin's favorite framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
