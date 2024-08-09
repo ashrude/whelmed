@@ -7,6 +7,7 @@ export * from "./widgets/Row";
 export * from "./widgets/GenRow";
 export * from "./widgets/RowGroup";
 export * from "./widgets/EntryRow";
+export * from "./widgets/ComboRow";
 
 
 export * from "./component";
