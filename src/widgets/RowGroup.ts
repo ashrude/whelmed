@@ -34,6 +34,9 @@ export class RowGroup extends Widget {
             if (Number(i) === (this.children.length - 1))
                 this.children[i].position_row("end");
 
+            if (this.children.length === 1)
+                this.children[i].position_row("only");
+            
             this.element.appendChild(this.children[i].build());
         }
 
