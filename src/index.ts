@@ -1,3 +1,5 @@
+export { Align } from "./widgets/common";
+
 export * from "./widgets/Application";
 export * from "./widgets/Label";
 export * from "./widgets/Box";
