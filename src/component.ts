@@ -7,7 +7,6 @@ MODEL,
 INIT,
 WIDGETS
 > {
-    updateView?(): Promise<void> | void
 }
 
 export abstract class Component<
@@ -26,17 +25,12 @@ export abstract class Component<
 
     constructor(init: INIT) {
         this.model = this.init(init);
-
-        if(this.updateView)
-            this.updateView();
     };
 
     abstract init(init: INIT): MODEL;
 
-    async input<K extends keyof INPUT>(key: K, value: INPUT[K]): Promise<void> {
-        await this.update(key, value);
-        if(this.updateView)
-            await this.updateView();
+    input<K extends keyof INPUT>(key: K, value: INPUT[K]): void {
+        this.update(key, value);
     }
     output<K extends keyof OUTPUT>(key: K, value: OUTPUT[K]): void {
         if (this.#forwarder) {
@@ -44,7 +38,7 @@ export abstract class Component<
         }
     }
     
-    abstract update<T extends keyof INPUT>(key: T, value: INPUT[T]): Promise<void> | void;
+    abstract update<T extends keyof INPUT>(key: T, value: INPUT[T]): void;
 
     forward(forwarder: <K extends keyof OUTPUT>(key: K, value: OUTPUT[K]) => void) {
         this.#forwarder = forwarder;
